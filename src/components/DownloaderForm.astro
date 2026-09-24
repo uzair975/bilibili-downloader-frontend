@@ -134,10 +134,9 @@ const {
     if (btnText) btnText.textContent = 'Resolving Streams...';
 
     try {
-      // Backend API endpoint: relative in dev proxy or default to port 8000
-      const apiUrl = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? 'http://127.0.0.1:8000/api/v1/resolve'
-        : '/api/v1/resolve';
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiBase = isLocal ? 'http://127.0.0.1:8000' : 'https://bilibili-downloader-backend-vpif.onrender.com';
+      const apiUrl = `${apiBase}/api/v1/resolve`;
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -148,7 +147,14 @@ const {
         body: JSON.stringify({ url })
       });
 
-      const data = await response.json();
+      let data = null;
+      try {
+        data = await response.json();
+      } catch (jsonErr) {
+        throw new Error(response.status === 502 || response.status === 504 
+          ? 'Backend is currently waking up. Please retry in a few seconds.' 
+          : `Server returned error (${response.status}). Please try again.`);
+      }
 
       if (!response.ok || !data || data.success === false) {
         const errDetail = data?.error || data?.detail || 'Failed to extract video streams.';

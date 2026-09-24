@@ -249,9 +249,10 @@ const jsonLd = [
     if (spinner) (spinner as HTMLElement).style.display = 'inline-flex';
 
     try {
-      const apiUrl = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? 'http://127.0.0.1:8000/api/v1/resolve'
-        : '/api/v1/resolve';
+      const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      const apiBase = isLocal ? 'http://127.0.0.1:8000' : 'https://bilibili-downloader-backend-vpif.onrender.com';
+      const apiUrl = `${apiBase}/api/v1/resolve`;
+      const downloadEndpoint = `${apiBase}/api/v1/download`;
 
       const resp = await fetch(apiUrl, {
         method: 'POST',
@@ -259,17 +260,22 @@ const jsonLd = [
         body: JSON.stringify({ url })
       });
 
-      const data = await resp.json();
-      if (!resp.ok || !data.thumbnail) {
-        throw new Error(data.error || 'Could not find thumbnail for this video.');
+      let data = null;
+      try {
+        data = await resp.json();
+      } catch (jsonErr) {
+        throw new Error(resp.status === 502 || resp.status === 504 
+          ? 'Backend is waking up. Please retry in a few seconds.' 
+          : `Server returned error (${resp.status}). Please try again.`);
+      }
+
+      if (!resp.ok || !data || !data.thumbnail) {
+        throw new Error(data?.error || data?.detail || 'Could not find thumbnail for this video.');
       }
 
       // Setup download links
       const rawCoverUrl = data.thumbnail;
       const cleanTitle = (data.title || 'bilibili_cover').replace(/[\\/*?:"<>|]/g, '_').slice(0, 50);
-      const downloadEndpoint = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? 'http://127.0.0.1:8000/api/v1/download'
-        : '/api/v1/download';
 
       const proxiedDownload = `${downloadEndpoint}?url=${encodeURIComponent(rawCoverUrl)}&filename=${encodeURIComponent(cleanTitle + '_cover.jpg')}&type=image`;
 

@@ -158,16 +158,16 @@
     if (!section) return;
 
     // Fill metadata
-    const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-      ? 'http://127.0.0.1:8000'
-      : '';
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const apiBase = isLocal ? 'http://127.0.0.1:8000' : 'https://bilibili-downloader-backend-vpif.onrender.com';
 
     function resolveMediaUrl(u) {
       if (!u) return '';
-      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
-        return u
-          .replace(/^http:\/\/(127\.0\.0\.1|localhost):8000/, window.location.origin)
-          .replace(/^https:\/\/bilibili-downloader-backend-vpif\.onrender\.com/, window.location.origin);
+      if (u.startsWith('/')) {
+        return `${apiBase}${u}`;
+      }
+      if (!isLocal) {
+        return u.replace(/^http:\/\/(127\.0\.0\.1|localhost):8000/, apiBase);
       }
       return u;
     }
