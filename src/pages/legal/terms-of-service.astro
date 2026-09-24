@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Terms of Service - BiliExtract"
+  description="Terms of service and usage conditions for the BiliExtract online media extraction utility."
+  canonical="https://biliextract.com/legal/terms-of-service/"
+>
+  <article class="legal-page">
+    <div class="container legal-container">
+      <div class="card legal-card">
+        <h1>Terms of Service</h1>
+        <p class="updated-date">Last Updated: September 2026</p>
+
+        <section>
+          <h2>1. Acceptance of Terms</h2>
+          <p>
+            By accessing and utilizing BiliExtract ("the Service"), you agree to be bound by these Terms of Service.
+            If you do not agree with any part of these terms, you must discontinue use of the Service immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2>2. Permitted Personal Use</h2>
+          <p>
+            BiliExtract is provided strictly for personal, non-commercial, and archival fair use. You are solely responsible for ensuring
+            that your downloading of any public media complies with applicable local laws, fair-use provisions, and intellectual property statutes.
+          </p>
+        </section>
+
+        <section>
+          <h2>3. Intellectual Property Rights</h2>
+          <p>
+            BiliExtract does not host, store, duplicate, or maintain copies of any multimedia files, streams, or databases on its servers.
+            All video, audio, and subtitle streams resolved by the tool originate directly from third-party networks and Bilibili content delivery networks.
+          </p>
+        </section>
+
+        <section>
+          <h2>4. Limitation of Liability</h2>
+          <p>
+            The Service is provided on an "as is" and "as available" basis without warranties of any kind.
+            Under no circumstances shall BiliExtract or its operators be liable for any direct, indirect, incidental, or consequential damages arising from the use of this utility.
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    padding: 60px 0 80px;
+  }
+  .legal-container {
+    max-width: 820px;
+  }
+  .legal-card {
+    padding: 48px;
+  }
+  .legal-card h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+  .updated-date {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+  }
+  .legal-card section {
+    margin-bottom: 28px;
+  }
+  .legal-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+  .legal-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Save Bilibili Videos to iPhone and iPad Camera Roll",
+  "description": "Complete guide on saving Bilibili MP4 videos and MP3 audio directly to iPhone or iPad Photos app.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Copy Share Link in Bilibili App",
+      "text": "Open the Bilibili iOS app, tap the Share arrow, and select 'Copy Link'."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Paste in Safari on BiliExtract",
+      "text": "Open Safari, visit BiliExtract, paste the link and press Download."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Save to Photos Camera Roll",
+      "text": "Download the MP4 file in Safari, tap the download manager icon, tap Share and 'Save Video'."
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="How to Save Bilibili Videos to iPhone & iPad Camera Roll"
+  description="Learn how to download and save Bilibili videos directly to your iPhone or iPad Camera Roll without installing third-party apps."
+  canonical="https://biliextract.com/guides/how-to-save-bilibili-iphone/"
+  jsonLd={jsonLd}
+>
+  <article class="guide-article">
+    <div class="container guide-container">
+      <div class="badge-tag">Mobile Guide</div>
+      <h1 class="guide-title">How to Save Bilibili Videos to iPhone & iPad Camera Roll</h1>
+      <p class="guide-meta">Updated for iOS 17 & 18 • 4 Min Read</p>
+
+      <div class="card guide-body">
+        <p class="lead">
+          Thanks to modern iOS Safari file handling, downloading videos directly into your Photos app is quick and does not require complex shortcuts or third-party apps.
+        </p>
+
+        <h2>Step 1: Copy the Link from the Bilibili App</h2>
+        <p>
+          While watching a video in the official Bilibili iOS app, tap the <strong>Share</strong> button (arrow icon) on the top-right corner.
+          In the share drawer, tap <strong>Copy Link</strong>. This will copy a shortlink (such as <code>https://b23.tv/...</code>).
+        </p>
+
+        <h2>Step 2: Paste into BiliExtract Safari</h2>
+        <p>
+          Open <strong>Safari</strong> on your iPhone and go to <a href="/" class="text-link">BiliExtract.com</a>.
+          Tap the paste icon inside the search bar. BiliExtract automatically unrolls shortlinks and retrieves the video streams.
+        </p>
+
+        <h2>Step 3: Download and Move to Camera Roll</h2>
+        <ol>
+          <li>Tap the <strong>Download MP4</strong> button for your preferred resolution.</li>
+          <li>Safari will prompt: <em>"Do you want to download [filename]?"</em> Tap <strong>Download</strong>.</li>
+          <li>Once downloaded, tap the download icon in Safari's address bar.</li>
+          <li>Open the video file, tap the iOS <strong>Share Sheet</strong> (square with arrow), and choose <strong>Save Video</strong>.</li>
+        </ol>
+
+        <p>Your Bilibili video is now permanently stored in your iPhone's native Camera Roll!</p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .guide-article {
+    padding: 60px 0 80px;
+  }
+
+  .guide-container {
+    max-width: 820px;
+  }
+
+  .guide-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin: 16px 0 8px;
+    color: var(--text-primary);
+    line-height: 1.25;
+  }
+
+  .guide-meta {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .guide-body {
+    padding: 44px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  .guide-body .lead {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+
+  .guide-body h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 32px 0 14px;
+  }
+
+  .guide-body p {
+    margin-bottom: 16px;
+  }
+
+  .guide-body ol {
+    margin-left: 24px;
+    margin-bottom: 24px;
+  }
+
+  .guide-body li {
+    margin-bottom: 10px;
+  }
+
+  .text-link {
+    color: var(--orange-500);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  code {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--rose-600);
+  }
+
+  @media (max-width: 640px) {
+    .guide-body {
+      padding: 24px;
+    }
+    .guide-title {
+      font-size: 2rem;
+    }
+  }
+</style>

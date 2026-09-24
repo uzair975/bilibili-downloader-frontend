@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DownloaderForm from '../../components/DownloaderForm.astro';
+import StreamResults from '../../components/StreamResults.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const audioFaqs = [
+  {
+    question: "What audio bitrate do you extract from Bilibili videos?",
+    answer: "We extract the maximum available audio stream quality directly from Bilibili's DASH manifest, up to 320 kbps (High Fidelity) and 192 kbps studio audio, with fallback to standard 128 kbps."
+  },
+  {
+    question: "Can I extract audio from anime songs and gaming streams?",
+    answer: "Yes, any public Bilibili music video, anime OST, vocaloid track, or live stream VOD can be converted to MP3/M4A."
+  },
+  {
+    question: "Is there any audio compression or loss of quality during conversion?",
+    answer: "No re-encoding compression is performed. You receive the exact untouched high-bitrate AAC/MP4A stream as uploaded by the content creator."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BiliExtract - Bilibili to MP3 Audio Converter",
+  "url": "https://biliextract.com/tools/bilibili-to-mp3/",
+  "applicationCategory": "AudioApplication",
+  "operatingSystem": "All",
+  "description": "Convert and extract high quality 320kbps MP3 audio tracks directly from Bilibili videos online."
+};
+---
+
+<BaseLayout
+  title="Bilibili to MP3 Converter - Free 320kbps Audio Extractor"
+  description="Convert Bilibili videos to MP3 online for free. Download high-fidelity 320kbps and 192kbps anime songs, background music, and podcasts with no software required."
+  canonical="https://biliextract.com/tools/bilibili-to-mp3/"
+  jsonLd={jsonLd}
+>
+  <section class="tool-hero">
+    <div class="container hero-container">
+      <div class="badge-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+        </svg>
+        Lossless Audio Extraction
+      </div>
+      <h1 class="tool-title">
+        Convert <span class="text-gradient">Bilibili to MP3</span> in Studio 320kbps
+      </h1>
+      <p class="tool-subtitle">
+        Extract crystal-clear music, anime themes, ASMR, and vocal tracks directly from Bilibili videos in seconds.
+      </p>
+
+      <div class="form-box">
+        <DownloaderForm
+          placeholder="Paste Bilibili link to extract MP3 audio..."
+          buttonText="Extract MP3"
+          initialFormat="audio"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <StreamResults />
+  </div>
+
+  <section class="info-content-section">
+    <div class="container">
+      <div class="card content-card">
+        <h2>Why Use BiliExtract for Bilibili MP3 Downloads?</h2>
+        <p>
+          Bilibili is home to thousands of original music tracks, Vocaloid songs, anime OSTs, and independent indie musicians.
+          However, listening offline or on portable music players can be challenging without extracting pure audio files.
+        </p>
+        <p>
+          BiliExtract's dedicated audio engine detects the isolated audio stream encoded in AAC / MP4A format inside Bilibili's DASH stream manifest,
+          bypassing video bloat to deliver pure, high-fidelity sound.
+        </p>
+
+        <div class="perks-row">
+          <div class="perk-box">
+            <strong>320 kbps High Bitrate</strong>
+            <span>Studio quality preservation without clipping.</span>
+          </div>
+          <div class="perk-box">
+            <strong>No Conversion Wait Time</strong>
+            <span>Instant stream retrieval without server-side rendering queues.</span>
+          </div>
+          <div class="perk-box">
+            <strong>ID3 Metadata Ready</strong>
+            <span>Preserves original creator and song title information.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <FaqAccordion faqs={audioFaqs} />
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-hero {
+    padding: 60px 0 24px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 10%, rgba(244, 63, 94, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tool-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 16px 0;
+    color: var(--text-primary);
+  }
+
+  .tool-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .form-box {
+    width: 100%;
+  }
+
+  .info-content-section {
+    padding: 40px 0;
+  }
+
+  .content-card {
+    padding: 40px;
+  }
+
+  .content-card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .content-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .perks-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+  }
+
+  .perk-box {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .perk-box strong {
+    color: var(--orange-500);
+    font-size: 1.05rem;
+  }
+
+  .perk-box span {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .tool-title {
+      font-size: 2.1rem;
+    }
+    .perks-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

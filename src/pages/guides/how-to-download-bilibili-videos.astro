@@ -1,0 +1,800 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DownloaderForm from '../../components/DownloaderForm.astro';
+import StreamResults from '../../components/StreamResults.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "How to Download Bilibili Videos: The Ultimate Guide (Desktop & Mobile App)",
+    "description": "Comprehensive tutorial on extracting Bilibili video URLs on desktop and mobile apps, and downloading 1080p MP4 videos, MP3 audio, and danmaku subtitles with zero login required.",
+    "author": {
+      "@type": "Organization",
+      "name": "BiliExtract Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BiliExtract",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://biliextract.com/favicon.svg"
+      }
+    },
+    "datePublished": "2026-01-15T08:00:00+00:00",
+    "dateModified": "2026-09-23T12:00:00+00:00",
+    "mainEntityOfPage": "https://biliextract.com/guides/how-to-download-bilibili-videos/"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Download Bilibili Videos Online",
+    "description": "Step-by-step procedure to copy Bilibili video URLs and download high-definition media files.",
+    "totalTime": "PT2M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Find the Bilibili Video Link",
+        "text": "On Desktop, copy the URL from the browser address bar. On Mobile app, tap the Share icon and choose 'Copy Link'."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Paste into BiliExtract Downloader",
+        "text": "Paste the copied URL or b23.tv shortlink into the search bar on BiliExtract."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Select Format and Download",
+        "text": "Choose your desired resolution (1080P Full HD, 720P, or MP3 Audio track) and save the media directly to your device."
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I find the Bilibili video URL on the mobile app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open the Bilibili app, play the video, tap the 'Share' arrow icon located at the top-right corner of the video player, and tap 'Copy Link'. This creates a b23.tv short link ready for extraction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I download Bilibili videos in 1080p Full HD without an account?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! BiliExtract extracts high-definition 1080P Full HD DASH video streams directly without requiring any Bilibili login credentials or cookies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a BV ID, AV ID, and b23.tv link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BV IDs (e.g., BV1xx411c7mD) are Bilibili's modern alphanumeric identifiers. AV IDs are legacy numerical identifiers. b23.tv links are mobile share shortlinks that redirect to the full video page. BiliExtract natively supports all three formats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do mobile share links contain Chinese text when copied?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Bilibili mobile app attaches promotional title text and Chinese emojis before the actual link when copying. BiliExtract automatically filters out the promotional text and extracts the core URL."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it safe to download Bilibili videos online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. BiliExtract runs completely in the cloud via secure HTTPS and does not require you to install browser extensions, third-party APKs, or desktop executable files."
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="How to Download Bilibili Videos: Ultimate Guide (Desktop & Mobile App)"
+  description="The ultimate step-by-step guide on how to download Bilibili videos on desktop PC/Mac and mobile app (iPhone & Android). Learn URL extraction, 1080p downloads, and MP3 saving."
+  canonical="https://biliextract.com/guides/how-to-download-bilibili-videos/"
+  jsonLd={jsonLd}
+>
+  <article class="guide-article">
+    <div class="container guide-container">
+      
+      <!-- Article Header -->
+      <div class="guide-header">
+        <div class="badge-tag">Ultimate Tutorial</div>
+        <h1 class="guide-title">How to Download Bilibili Videos: The Ultimate Guide</h1>
+        <p class="guide-subtitle">
+          Master URL extraction on the Mobile App & Desktop browser, unroll shortlinks, and download 1080p MP4s or MP3s with zero software installation.
+        </p>
+        <div class="guide-meta-row">
+          <span>📅 Updated for 2026</span>
+          <span>⏱️ 5 Min Read</span>
+          <span>📱 iOS, Android, Windows & Mac</span>
+          <span>🔒 100% Free & No Login</span>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Downloader Bar -->
+      <div class="guide-quick-tool">
+        <div class="quick-tool-header">
+          <h3>Try It Right Now</h3>
+          <p>Paste any Bilibili video link, BV ID, or b23.tv shortlink below to start downloading:</p>
+        </div>
+        <DownloaderForm placeholder="Paste Bilibili link here (e.g., https://www.bilibili.com/video/BV... or b23.tv/...)" />
+        <StreamResults />
+      </div>
+
+      <div class="card guide-body">
+        
+        <!-- Featured Snippet Box -->
+        <div class="highlight-callout">
+          <h4>⚡ Quick Summary (How to Download in 3 Steps):</h4>
+          <ol>
+            <li><strong>Copy the link:</strong> On desktop, copy the URL from your browser's address bar. On mobile, tap <em>Share &gt; Copy Link</em> in the Bilibili app.</li>
+            <li><strong>Paste into BiliExtract:</strong> Enter the link into the search bar at the top of <a href="/" class="text-link">BiliExtract.com</a>.</li>
+            <li><strong>Save your video:</strong> Select <strong>Video + Audio (720p/360p)</strong> for a standard MP4, or switch to <strong>Video Only (DASH)</strong> for full 1080p HD, then click <em>Download</em>.</li>
+          </ol>
+        </div>
+
+        <!-- Table of Contents -->
+        <nav class="toc-box">
+          <h3 class="toc-heading">Table of Contents</h3>
+          <ul class="toc-list">
+            <li><a href="#desktop-url-extraction">1. How to Find & Copy Bilibili URLs on Desktop (PC & Mac)</a></li>
+            <li><a href="#mobile-url-extraction">2. How to Find & Copy Bilibili URLs on Mobile App (iOS & Android)</a></li>
+            <li><a href="#url-formats">3. Understanding Bilibili URL Formats (BV, AV, and b23.tv)</a></li>
+            <li><a href="#step-by-step-download">4. Step-by-Step Guide: Downloading with BiliExtract</a></li>
+            <li><a href="#resolutions-audio">5. Choosing Resolutions: 1080p Full HD vs Combined MP4</a></li>
+            <li><a href="#faq">6. Frequently Asked Questions (FAQ)</a></li>
+          </ul>
+        </nav>
+
+        <!-- Section 1: Desktop Extraction -->
+        <section id="desktop-url-extraction" class="guide-section">
+          <h2>1. How to Find & Copy Bilibili Video URLs on Desktop (PC & Mac)</h2>
+          <p>
+            Locating video links on a desktop browser (such as Google Chrome, Microsoft Edge, Mozilla Firefox, or Apple Safari) is the quickest way to queue downloads in high quality.
+          </p>
+
+          <h3>Method A: The Browser Address Bar (Recommended)</h3>
+          <p>
+            When watching any video on <a href="https://www.bilibili.com" target="_blank" rel="noopener nofollow" class="text-link">bilibili.com</a>, simply click on the address bar at the top of your web browser.
+          </p>
+          <div class="code-example-box">
+            <span class="code-label">Standard Desktop Video URL Format:</span>
+            <code>https://www.bilibili.com/video/BV1xx411c7mD/</code>
+          </div>
+          <ul>
+            <li>Highlight the entire URL with <kbd>Ctrl</kbd> + <kbd>A</kbd> (Windows) or <kbd>Cmd</kbd> + <kbd>A</kbd> (Mac).</li>
+            <li>Copy it to your clipboard with <kbd>Ctrl</kbd> + <kbd>C</kbd> or <kbd>Cmd</kbd> + <kbd>C</kbd>.</li>
+          </ul>
+
+          <h3>Method B: Using the On-Player Share Menu</h3>
+          <p>
+            If you are viewing the video in mini-player mode or inside an embedded frame:
+          </p>
+          <ol>
+            <li>Hover over the video player or scroll just below the playback window.</li>
+            <li>Click on the <strong>Share</strong> icon (an arrow or forwarding icon near the Like and Coin buttons).</li>
+            <li>Click <strong>Copy Link</strong> (复制链接). The exact canonical URL will be saved to your clipboard.</li>
+          </ol>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Section 2: Mobile App Extraction -->
+        <section id="mobile-url-extraction" class="guide-section">
+          <h2>2. How to Find & Copy Bilibili URLs on Mobile App (iPhone, iPad & Android)</h2>
+          <p>
+            The official Bilibili mobile app for iOS and Android handles links differently by generating shortened tracking links (beginning with <code>b23.tv</code>). Here is how to extract them effortlessly:
+          </p>
+
+          <h3>Step-by-Step Mobile Extraction:</h3>
+          <ol class="detailed-steps">
+            <li>
+              <strong>Open the Bilibili App:</strong> Navigate to the video you wish to save.
+            </li>
+            <li>
+              <strong>Tap the Share Button:</strong> Look at the top right of the active video player or beneath the video title for the <strong>Share icon</strong> (represented by an arrow pointing upwards or to the right).
+            </li>
+            <li>
+              <strong>Tap "Copy Link" (复制链接):</strong> A bottom drawer will slide up displaying various sharing channels (WeChat, Weibo, QQ, etc.). Swipe until you see the link icon labeled <strong>Copy Link</strong> and tap it.
+            </li>
+            <li>
+              <strong>Handling the Copied Message:</strong> The Bilibili app frequently copies a snippet of promotional Chinese text along with the link, for example:
+              <div class="code-example-box">
+                <span class="code-label">Raw Copied App Text Example:</span>
+                <code>【【4KHDR】ULTRA HD 60帧 测试片源】 https://b23.tv/aBcDeFg 复制链接打开哔哩哔哩</code>
+              </div>
+              <div class="tip-box">
+                <strong>Good News:</strong> You do <em>not</em> need to manually delete the Chinese text. BiliExtract's smart parser automatically scans your input, isolates the <code>b23.tv/...</code> link, unrolls the redirect, and resolves the clean video stream!
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Section 3: Understanding Formats -->
+        <section id="url-formats" class="guide-section">
+          <h2>3. Understanding Bilibili URL Formats (BV ID, AV ID & Shortlinks)</h2>
+          <p>
+            Over the years, Bilibili has utilized multiple URL schemes. BiliExtract is engineered to accept and parse every valid Bilibili video format seamlessly:
+          </p>
+
+          <div class="format-table-wrapper">
+            <table class="format-table">
+              <thead>
+                <tr>
+                  <th>Format Type</th>
+                  <th>Structure Example</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>BV Identifier (Modern)</strong></td>
+                  <td><code>bilibili.com/video/BV1R1e4zKEh1</code></td>
+                  <td>Standard Base58-encoded ID used since 2020. Recommended format.</td>
+                </tr>
+                <tr>
+                  <td><strong>b23.tv Shortlink (Mobile)</strong></td>
+                  <td><code>https://b23.tv/XYZ123</code></td>
+                  <td>Generated by the iOS and Android apps when sharing.</td>
+                </tr>
+                <tr>
+                  <td><strong>AV Number (Legacy)</strong></td>
+                  <td><code>bilibili.com/video/av170001</code></td>
+                  <td>Original numeric identifier system. Fully supported.</td>
+                </tr>
+                <tr>
+                  <td><strong>Raw BV / AV Code</strong></td>
+                  <td><code>BV1R1e4zKEh1</code> or <code>av115071804</code></td>
+                  <td>You can paste just the code itself without any prefix or protocol!</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Section 4: Downloading with BiliExtract -->
+        <section id="step-by-step-download" class="guide-section">
+          <h2>4. Step-by-Step Guide: Downloading with BiliExtract</h2>
+          <p>
+            Follow this 3-step walkthrough to extract and save your video files:
+          </p>
+
+          <div class="step-card">
+            <div class="step-badge">Step 1</div>
+            <div class="step-content">
+              <h3>Paste Your Link into the Downloader</h3>
+              <p>
+                Navigate to <a href="/" class="text-link">BiliExtract.com</a> on your desktop browser or mobile phone. Tap or click inside the input box and paste your link. You can also tap the convenient <strong>Paste</strong> button to grab it straight from your clipboard.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">Step 2</div>
+            <div class="step-content">
+              <h3>Click "Download Now" & Wait for Resolution</h3>
+              <p>
+                Click the orange <strong>Download Now</strong> button. Our backend connects to Bilibili's public media servers, analyzes the video bitrate, duration, author details, and prepares download links across all available resolutions.
+              </p>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">Step 3</div>
+            <div class="step-content">
+              <h3>Select Your Preferred Format & Save</h3>
+              <p>
+                Once the results table appears, you have several format options:
+              </p>
+              <ul>
+                <li><strong>Video + Audio Tab:</strong> Best for casual viewing. Provides single-file MP4s with audio pre-synced (available up to 720P HD).</li>
+                <li><strong>Video Only (DASH) Tab:</strong> Best for high-definition collectors. Offers crisp 1080P Full HD video streams in H.264, HEVC, or AV1 codecs.</li>
+                <li><strong>Audio (MP3 / M4A) Tab:</strong> Extracts the synchronized music or voice track in up to 320 kbps high fidelity.</li>
+                <li><strong>Danmaku & Subtitles Tab:</strong> Downloads closed captions (.SRT) or synchronized flying bullet comments (.XML).</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Section 5: Resolutions & DASH Guide -->
+        <section id="resolutions-audio" class="guide-section">
+          <h2>5. Bilibili Quality Breakdown: Why Are Some 1080p Videos Silent?</h2>
+          <p>
+            A common point of confusion among new Bilibili users is how high-resolution video is delivered:
+          </p>
+          <div class="notice-card">
+            <h4>💡 Why Bilibili Uses DASH Streaming:</h4>
+            <p>
+              For any resolution at or above 1080P, Bilibili utilizes <strong>DASH (Dynamic Adaptive Streaming over HTTP)</strong>. Under DASH, the video stream and the audio track are stored as two separate data streams on Bilibili's CDN.
+            </p>
+            <p>
+              If you download a 1080P video under the <em>Video Only (DASH)</em> tab, it will not have an embedded audio track. To enjoy high-definition video with crystal-clear audio:
+            </p>
+            <ol>
+              <li>Download the <strong>1080P MP4</strong> from the <em>Video Only (DASH)</em> tab.</li>
+              <li>Download the <strong>MP3 / M4A</strong> audio file from the <em>Audio</em> tab.</li>
+              <li>Combine them in seconds using free tools like <strong>FFmpeg</strong>, <strong>VLC Media Player</strong>, or online video joiners.</li>
+            </ol>
+            <p>
+              If you prefer instant 1-click playback without combining files, simply download from the <strong>Video + Audio</strong> tab (which offers 720P HD with sound already built-in).
+            </p>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <!-- Section 6: FAQ -->
+        <section id="faq" class="guide-section">
+          <h2>6. Frequently Asked Questions (FAQ)</h2>
+
+          <div class="faq-accordion">
+            <details class="faq-item" open>
+              <summary class="faq-question">
+                <span>Do I need to create a Bilibili account or sign in to download?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                No. BiliExtract extracts publicly available streams directly from Bilibili's CDN infrastructure without requiring your personal account credentials, passwords, or browser cookies.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Can I download Bilibili videos on iPhone and iPad Camera Roll?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                Yes! Simply copy the b23.tv link from the Bilibili app, open Safari, paste it into BiliExtract, tap Download MP4, and select 'Save Video' in Safari's download manager to store it directly in your iOS Photos app.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Why did my download link return a 403 Forbidden or 412 error on other websites?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                Bilibili's media servers inspect HTTP Referer and User-Agent headers to prevent third-party hotlinking. BiliExtract operates an intelligent edge proxy that injects the required headers, ensuring your downloads start smoothly without 403 or 412 blocks.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>How fast is the downloading process?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                Because BiliExtract streams data directly through high-bandwidth reverse proxies without caching heavy video files to server disk, downloads occur at the maximum speed supported by your internet connection.
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- CTA Box -->
+        <div class="cta-banner">
+          <h3>Ready to Download Bilibili Content?</h3>
+          <p>Try the fastest and safest online Bilibili downloader today — no apps, no fees, no login required.</p>
+          <a href="/" class="btn-primary">Go to BiliExtract Downloader →</a>
+        </div>
+
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .guide-article {
+    padding: 60px 0 80px;
+  }
+
+  .guide-container {
+    max-width: 860px;
+  }
+
+  .guide-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .guide-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 16px 0 12px;
+    color: var(--text-primary);
+    line-height: 1.25;
+  }
+
+  .guide-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 720px;
+    margin: 0 auto 20px;
+    line-height: 1.6;
+  }
+
+  .guide-meta-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  /* Quick Downloader Tool Box */
+  .guide-quick-tool {
+    margin-bottom: 40px;
+  }
+
+  .quick-tool-header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  .quick-tool-header h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .quick-tool-header p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .guide-body {
+    padding: 44px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+  }
+
+  /* Callout & TOC */
+  .highlight-callout {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.08), rgba(244, 63, 94, 0.06));
+    border: 1px solid rgba(255, 107, 0, 0.25);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 32px;
+  }
+
+  .highlight-callout h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .highlight-callout ol {
+    margin-left: 20px;
+  }
+
+  .highlight-callout li {
+    margin-bottom: 8px;
+  }
+
+  .toc-box {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+  }
+
+  .toc-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-list li {
+    margin-bottom: 8px;
+  }
+
+  .toc-list a {
+    color: var(--orange-600);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+  }
+
+  .toc-list a:hover {
+    color: var(--rose-600);
+    text-decoration: underline;
+  }
+
+  .guide-section {
+    margin-bottom: 36px;
+  }
+
+  .guide-section h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 20px 0 16px;
+  }
+
+  .guide-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 20px 0 10px;
+  }
+
+  .guide-section p {
+    margin-bottom: 16px;
+  }
+
+  .code-example-box {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    margin: 12px 0 16px;
+  }
+
+  .code-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
+  code {
+    background: transparent;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: var(--rose-600);
+    word-break: break-all;
+  }
+
+  kbd {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.85em;
+    font-weight: 700;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .tip-box {
+    background: var(--orange-50);
+    border-left: 4px solid var(--orange-500);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin: 16px 0;
+  }
+
+  .section-divider {
+    border: 0;
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 36px 0;
+  }
+
+  /* Detailed Steps Cards */
+  .detailed-steps {
+    margin-left: 20px;
+    margin-bottom: 24px;
+  }
+
+  .detailed-steps li {
+    margin-bottom: 14px;
+  }
+
+  .step-card {
+    display: flex;
+    gap: 16px;
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+
+  .step-badge {
+    background: var(--gradient-primary);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    height: fit-content;
+    white-space: nowrap;
+  }
+
+  .step-content h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text-primary);
+  }
+
+  .step-content p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  .step-content ul {
+    margin-left: 20px;
+    font-size: 0.95rem;
+  }
+
+  /* Format Table */
+  .format-table-wrapper {
+    overflow-x: auto;
+    margin: 16px 0;
+  }
+
+  .format-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .format-table th {
+    background: var(--bg-surface-alt);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--border-subtle);
+  }
+
+  .format-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    vertical-align: top;
+  }
+
+  /* Notice Card */
+  .notice-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    margin: 16px 0;
+  }
+
+  .notice-card h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+
+  .notice-card ol {
+    margin-left: 20px;
+    margin-bottom: 16px;
+  }
+
+  .notice-card li {
+    margin-bottom: 6px;
+  }
+
+  /* FAQ Accordion */
+  .faq-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-surface-alt);
+  }
+
+  .faq-question {
+    list-style: none;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-toggle-icon {
+    font-size: 0.8rem;
+    color: var(--orange-500);
+    transition: transform var(--transition-fast);
+  }
+
+  details[open] .faq-toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 14px 20px 18px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border-subtle);
+    background: #ffffff;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.1), rgba(244, 63, 94, 0.08));
+    border: 2px dashed rgba(255, 107, 0, 0.35);
+    border-radius: var(--radius-lg);
+    padding: 36px 24px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .cta-banner h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .cta-banner p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .text-link {
+    color: var(--orange-600);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .text-link:hover {
+    color: var(--rose-600);
+  }
+
+  @media (max-width: 640px) {
+    .guide-title {
+      font-size: 1.85rem;
+    }
+    .guide-body {
+      padding: 24px 18px;
+    }
+    .step-card {
+      flex-direction: column;
+    }
+  }
+</style>

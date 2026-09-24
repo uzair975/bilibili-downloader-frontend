@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Explicitly permit major AI Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://biliextract.com/sitemap.xml

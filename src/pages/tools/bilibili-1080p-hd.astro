@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DownloaderForm from '../../components/DownloaderForm.astro';
+import StreamResults from '../../components/StreamResults.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const hdFaqs = [
+  {
+    question: "Can I download 1080p 60FPS Bilibili videos?",
+    answer: "Yes, if the original creator uploaded high-frame-rate content (60FPS), BiliExtract detects and lists the 1080P 60FPS stream option."
+  },
+  {
+    question: "Why do some downloaders only give 360p or 480p?",
+    answer: "Standard scrapers only capture low-resolution legacy MP4 fallbacks. BiliExtract parses Bilibili's modern DASH video container to retrieve full 1080P Full HD and 720P streams."
+  },
+  {
+    question: "Which video codec is best: AVC / H.264, HEVC, or AV1?",
+    answer: "H.264 (AVC) offers the highest compatibility across all televisions, smart devices, and older editing software. HEVC and AV1 offer superior compression efficiency."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BiliExtract - 1080p Full HD Bilibili Video Downloader",
+  "url": "https://biliextract.com/tools/bilibili-1080p-hd/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "All",
+  "description": "Download 1080p Full HD and 60FPS Bilibili videos online without watermarks or login requirements."
+};
+---
+
+<BaseLayout
+  title="1080p Full HD Bilibili Video Downloader - 60FPS & High Bitrate"
+  description="Download Bilibili videos in pristine 1080p Full HD and 60FPS. Free online DASH stream parser with high-speed download speeds and zero compression."
+  canonical="https://biliextract.com/tools/bilibili-1080p-hd/"
+  jsonLd={jsonLd}
+>
+  <section class="tool-hero">
+    <div class="container hero-container">
+      <div class="badge-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="23 7 16 12 23 17 23 7"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+        </svg>
+        Full HD 1080p & 60FPS
+      </div>
+      <h1 class="tool-title">
+        Download <span class="text-gradient">Bilibili in 1080p HD</span> Quality
+      </h1>
+      <p class="tool-subtitle">
+        Preserve every frame in crisp 1080p resolution. High bitrate, 60fps support, and seamless sound extraction.
+      </p>
+
+      <div class="form-box">
+        <DownloaderForm
+          placeholder="Paste Bilibili video URL for 1080p HD download..."
+          buttonText="Download 1080p"
+          initialFormat="video"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <StreamResults />
+  </div>
+
+  <section class="info-content-section">
+    <div class="container">
+      <div class="card content-card">
+        <h2>Uncompromised High-Definition Visuals</h2>
+        <p>
+          Bilibili represents the largest anime, gaming, and creative video hub in Asia.
+          Watching videos in 360p or 480p degrades gameplay footage and animation clarity.
+        </p>
+        <p>
+          With BiliExtract, you gain direct access to the 1080p stream bitrate. We support H.264/AVC, HEVC, and modern AV1 codecs,
+          ensuring maximum video clarity whether you are archiving educational lectures or high-octane gaming montages.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <FaqAccordion faqs={hdFaqs} />
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-hero {
+    padding: 60px 0 24px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 10%, rgba(255, 107, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tool-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 16px 0;
+    color: var(--text-primary);
+  }
+
+  .tool-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .form-box {
+    width: 100%;
+  }
+
+  .info-content-section {
+    padding: 40px 0;
+  }
+
+  .content-card {
+    padding: 40px;
+  }
+
+  .content-card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .content-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .tool-title {
+      font-size: 2.1rem;
+    }
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  faqs?: FaqItem[];
+}
+
+const defaultFaqs: FaqItem[] = [
+  {
+    question: "Why do downloaded 1080p Bilibili videos sometimes have no sound on other websites?",
+    answer: "Bilibili utilizes DASH (Dynamic Adaptive Streaming over HTTP), which splits high-definition video and audio into two separate data streams. BiliExtract parses and extracts the synced media links to ensure full audio playback."
+  },
+  {
+    question: "Do I need a Bilibili account or login cookies to download high-resolution videos?",
+    answer: "No. Our tool extracts available public streams directly without requiring personal credentials, phone numbers, or session cookies."
+  },
+  {
+    question: "How do I download Bilibili videos to my iPhone or iPad?",
+    answer: "On iOS Safari, simply paste the video URL into BiliExtract, click 'Download Now', select your preferred video or MP3 option, and tap 'Download'. The file will save directly into your Safari Downloads folder or the iOS Files app."
+  },
+  {
+    question: "What is Danmaku and how do I download the flying comments?",
+    answer: "Danmaku (bullet comments) are the flying real-time user comments overlaying Bilibili videos. BiliExtract allows you to download the complete comment archive in standard XML format, which can be played back in media players like PotPlayer, VLC, or MPV."
+  },
+  {
+    question: "Is using BiliExtract completely free with no download limits?",
+    answer: "Yes, BiliExtract is 100% free to use with zero registration. You can convert and download as many videos and audio tracks as you need."
+  }
+];
+
+const { faqs = defaultFaqs } = Astro.props;
+---
+
+<section class="faq-section">
+  <div class="section-header">
+    <div class="badge-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C12.45 11.9 12 12.5 12 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/>
+      </svg>
+      Frequently Asked Questions
+    </div>
+    <h2 class="section-title">Got Questions? We've Got Answers</h2>
+    <p class="section-subtitle">Everything you need to know about extracting Bilibili video, audio, and subtitle streams.</p>
+  </div>
+
+  <div class="faq-accordion">
+    {faqs.map((faq, index) => (
+      <details class="card faq-item" open={index === 0}>
+        <summary class="faq-question">
+          <span>{faq.question}</span>
+          <div class="faq-toggle-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        </summary>
+        <div class="faq-answer">
+          <p>{faq.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    padding: 60px 0 80px;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  .faq-accordion {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .faq-item {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    list-style: none;
+    padding: 20px 24px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-toggle-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--orange-50);
+    color: var(--orange-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-smooth), background-color var(--transition-fast), color var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  details[open] .faq-toggle-icon {
+    transform: rotate(180deg);
+    background: var(--rose-50);
+    color: var(--rose-500);
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px 24px;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 16px;
+  }
+</style>

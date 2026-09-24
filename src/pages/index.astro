@@ -1,0 +1,294 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DownloaderForm from '../components/DownloaderForm.astro';
+import StreamResults from '../components/StreamResults.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "BiliExtract - Free Online Bilibili Video Downloader",
+    "url": "https://biliextract.com/",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "Download Bilibili videos, audio tracks, and danmaku subtitles in full HD 1080p, 720p, and MP3 without login credentials."
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why do downloaded 1080p Bilibili videos sometimes have no sound?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bilibili utilizes DASH (Dynamic Adaptive Streaming over HTTP), which splits high-definition video and audio into two separate data streams. BiliExtract parses and extracts the synced media links to ensure full audio playback."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a Bilibili account to download high-resolution videos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Our tool extracts available public streams directly without requiring personal credentials or session cookies."
+        }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Bilibili Video Downloader - Download 1080p HD, MP3 & Danmaku Subtitles"
+  description="Free online Bilibili downloader. Save Bilibili videos in 1080p Full HD, extract 320kbps MP3 audio tracks, and download XML danmaku bullet comments with no login required."
+  jsonLd={jsonLd}
+>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-badge">
+        <span class="badge-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          No Login Required • 1080p Full HD • Free MP3
+        </span>
+      </div>
+
+      <h1 class="hero-title">
+        The Ultimate <span class="text-gradient">Bilibili Video</span> Downloader
+      </h1>
+      <p class="hero-subtitle">
+        Extract and download Bilibili videos in high-definition 1080p/720p, convert anime soundtracks to MP3 audio, and save Danmaku subtitles in seconds.
+      </p>
+
+      <div class="form-wrapper">
+        <DownloaderForm />
+      </div>
+
+      <!-- Quick support formats -->
+      <div class="supported-formats">
+        <span class="format-pill">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          MP4 Video
+        </span>
+        <span class="format-pill">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          320kbps MP3
+        </span>
+        <span class="format-pill">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          XML Danmaku
+        </span>
+        <span class="format-pill">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          b23.tv Shortlinks
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Results (Dynamic) -->
+  <div class="container">
+    <StreamResults />
+  </div>
+
+  <!-- How It Works 3-Step Section -->
+  <section class="how-it-works-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="badge-tag">Simple Process</div>
+        <h2 class="section-title">How to Download Bilibili Videos in 3 Easy Steps</h2>
+        <p class="section-subtitle">No extensions, software, or account logins needed.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="card step-card">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Copy the Video Link</h3>
+          <p class="step-desc">Open Bilibili on your browser or app, find your desired video, and copy the URL or b23.tv share link.</p>
+        </div>
+
+        <div class="card step-card">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Paste & Resolve Streams</h3>
+          <p class="step-desc">Paste the link into the search bar above and click "Download Now". Our engine will analyze the media streams.</p>
+        </div>
+
+        <div class="card step-card">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Download MP4 or MP3</h3>
+          <p class="step-desc">Select your desired resolution (1080p, 720p) or audio quality and click download to save the file instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Grid -->
+  <div class="container">
+    <FeatureGrid />
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="container">
+    <FaqAccordion />
+  </div>
+</BaseLayout>
+
+<style>
+  .hero-section {
+    padding: 70px 0 30px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 10%, rgba(255, 107, 0, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badge {
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    max-width: 820px;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 680px;
+    margin-bottom: 36px;
+    line-height: 1.55;
+  }
+
+  .form-wrapper {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  .supported-formats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .format-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+  }
+
+  .format-pill svg {
+    color: var(--orange-500);
+  }
+
+  /* How it works */
+  .how-it-works-section {
+    padding: 70px 0;
+    background-color: var(--bg-surface-alt);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    margin: 40px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .step-card {
+    position: relative;
+    padding-top: 36px;
+  }
+
+  .step-number {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: rgba(244, 63, 94, 0.12);
+    line-height: 1;
+  }
+
+  .step-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+  }
+
+  .step-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.3rem;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+    }
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

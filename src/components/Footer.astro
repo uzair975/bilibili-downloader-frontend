@@ -1,0 +1,178 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand column -->
+      <div class="footer-col brand-col">
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="15" rx="3" ry="3"></rect>
+              <polyline points="17 2 12 7 7 2"></polyline>
+            </svg>
+          </div>
+          <span><strong class="text-gradient">Bili</strong>Extract</span>
+        </div>
+        <p class="footer-tagline">
+          The fastest and safest online tool to download Bilibili videos, audio MP3 tracks, and danmaku subtitles in high-definition without software installation.
+        </p>
+        <div class="badge-tag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+          </svg>
+          100% Free & Secure
+        </div>
+      </div>
+
+      <!-- Tools column -->
+      <div class="footer-col">
+        <h3 class="col-heading">Tools</h3>
+        <ul class="col-links">
+          <li><a href="/">Universal Downloader</a></li>
+          <li><a href="/tools/bilibili-to-mp3/">Bilibili to MP3 Converter</a></li>
+          <li><a href="/tools/bilibili-1080p-hd/">1080p HD Video Downloader</a></li>
+          <li><a href="/bilibili-thumbnail-downloader/">Thumbnail & Cover Downloader</a></li>
+          <li><a href="/tools/bilibili-danmaku-subtitle/">Danmaku & Subtitles (XML/ASS)</a></li>
+        </ul>
+      </div>
+
+      <!-- Guides column -->
+      <div class="footer-col">
+        <h3 class="col-heading">Tutorials</h3>
+        <ul class="col-links">
+          <li><a href="/guides/how-to-download-bilibili-videos/">How to Download (Ultimate Guide)</a></li>
+          <li><a href="/guides/how-to-download-bilibili-pc/">How to Download on PC & Mac</a></li>
+          <li><a href="/guides/how-to-save-bilibili-iphone/">Save Videos to iPhone & Android</a></li>
+          <li><a href="/guides/fix-bilibili-no-sound/">Fix DASH Video No Sound Issue</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal column -->
+      <div class="footer-col">
+        <h3 class="col-heading">Legal & Info</h3>
+        <ul class="col-links">
+          <li><a href="/legal/terms-of-service/">Terms of Service</a></li>
+          <li><a href="/legal/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/legal/copyright-disclaimer/">Copyright & DMCA</a></li>
+          <li><a href="/legal/contact/">Contact & Takedown</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} BiliExtract. All rights reserved. BiliExtract is an independent extractor and is not affiliated with Bilibili Inc.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    padding: 64px 0 32px;
+    margin-top: auto;
+  }
+
+  .footer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 780px;
+    margin: 0 auto 48px;
+  }
+
+  .footer-col {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .footer-col:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--gradient-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer-tagline {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 18px;
+    max-width: 620px;
+  }
+
+  .col-heading {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .col-heading::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+  }
+
+  .col-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .col-links a {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .col-links a:hover {
+    color: var(--orange-500);
+    transform: translateX(4px);
+  }
+
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DownloaderForm from '../../components/DownloaderForm.astro';
+import StreamResults from '../../components/StreamResults.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+
+const subFaqs = [
+  {
+    question: "How do I play downloaded XML Danmaku files on my PC?",
+    answer: "You can load the downloaded XML danmaku file into third-party desktop media players like PotPlayer (using Danmaku plugins) or convert the XML into ASS subtitle format with tools like Danmaku2ASS."
+  },
+  {
+    question: "Are official closed-caption subtitles also downloaded?",
+    answer: "Yes, whenever a Bilibili video includes official or community AI translated subtitles (English, Japanese, Traditional Chinese), direct download links are provided."
+  }
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BiliExtract - Danmaku & Subtitle Downloader",
+  "url": "https://biliextract.com/tools/bilibili-danmaku-subtitle/",
+  "applicationCategory": "MultimediaApplication",
+  "description": "Download Bilibili Danmaku bullet comments in XML format and multi-language closed caption subtitle files."
+};
+---
+
+<BaseLayout
+  title="Bilibili Danmaku & Subtitle Downloader - XML & ASS Comments"
+  description="Download Bilibili flying bullet comments (Danmaku) in XML and ASS subtitle format. Extract multi-language closed captions for any Bilibili video."
+  canonical="https://biliextract.com/tools/bilibili-danmaku-subtitle/"
+  jsonLd={jsonLd}
+>
+  <section class="tool-hero">
+    <div class="container hero-container">
+      <div class="badge-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+        </svg>
+        Interactive Bullet Comments
+      </div>
+      <h1 class="tool-title">
+        Download <span class="text-gradient">Bilibili Danmaku</span> & Subtitles
+      </h1>
+      <p class="tool-subtitle">
+        Preserve the full community experience. Download XML bullet comments and synced multilingual subtitles.
+      </p>
+
+      <div class="form-box">
+        <DownloaderForm
+          placeholder="Paste Bilibili link for Danmaku & subtitle extraction..."
+          buttonText="Fetch Comments"
+          initialFormat="subs"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <StreamResults />
+  </div>
+
+  <section class="info-content-section">
+    <div class="container">
+      <div class="card content-card">
+        <h2>What are Bilibili Danmaku (弹幕)?</h2>
+        <p>
+          Danmaku represents real-time viewer commentary that flies across the screen synchronized to specific moments in the video.
+          It gives Bilibili its iconic shared watching experience.
+        </p>
+        <p>
+          BiliExtract connects to Bilibili's CID stream indices to extract the complete comment archive in structured XML format,
+          ready for conversion or desktop playback.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <FaqAccordion faqs={subFaqs} />
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-hero {
+    padding: 60px 0 24px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 10%, rgba(244, 63, 94, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tool-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin: 16px 0;
+    color: var(--text-primary);
+  }
+
+  .tool-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin-bottom: 32px;
+  }
+
+  .form-box {
+    width: 100%;
+  }
+
+  .info-content-section {
+    padding: 40px 0;
+  }
+
+  .content-card {
+    padding: 40px;
+  }
+
+  .content-card h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+  }
+
+  .content-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .tool-title {
+      font-size: 2.1rem;
+    }
+  }
+</style>
