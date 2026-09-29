@@ -12,4 +12,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://biliextract.com/sitemap.xml
+Sitemap: https://biliextract.me/sitemap.xml
