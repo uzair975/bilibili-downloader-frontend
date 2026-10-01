@@ -19,7 +19,7 @@ const jsonLd = [
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Download Bilibili videos, audio tracks, and danmaku subtitles in full HD 1080p, 720p, and MP3 without login credentials."
+    "description": "Download Bilibili videos online in 1080p Full HD MP4 or extract MP3 audio for free. Supports b23.tv shortlinks, BV links, and Danmaku comments. No app needed."
   },
   {
     "@context": "https://schema.org",
@@ -47,8 +47,8 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Bilibili Video Downloader - Download 1080p HD, MP3 & Subtitles"
-  description="Free online Bilibili downloader. Save videos in 1080p HD, extract 320kbps MP3 audio, and download Danmaku subtitles with zero login required."
+  title="Bilibili Video Downloader — Free 1080p & MP3 (b23.tv Support)"
+  description="Download Bilibili videos online in 1080p Full HD MP4 or extract MP3 audio for free. Supports b23.tv shortlinks, BV links, and Danmaku comments. No app needed."
   canonical="https://biliextract.me/"
   jsonLd={jsonLd}
 >
@@ -65,7 +65,7 @@ const jsonLd = [
       </div>
 
       <h1 class="hero-title">
-        The Ultimate <span class="text-gradient">Bilibili Video</span> Downloader
+        Free <span class="text-gradient">Bilibili Video Downloader</span> (1080p HD & MP3)
       </h1>
       <p class="hero-subtitle">
         Extract and download Bilibili videos in high-definition 1080p/720p, convert anime soundtracks to MP3 audio, and save Danmaku subtitles in seconds.
@@ -73,6 +73,14 @@ const jsonLd = [
 
       <div class="form-wrapper">
         <DownloaderForm />
+        <p class="search-callout">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Paste any <strong>bilibili.com</strong> or <strong>b23.tv</strong> share link
+        </p>
       </div>
 
       <!-- Quick support formats -->
@@ -189,7 +197,31 @@ const jsonLd = [
 
   .form-wrapper {
     width: 100%;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-callout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .search-callout strong {
+    color: var(--orange-500);
+    font-weight: 600;
+  }
+
+  .search-callout svg {
+    color: var(--orange-500);
+    flex-shrink: 0;
   }
 
   .supported-formats {
