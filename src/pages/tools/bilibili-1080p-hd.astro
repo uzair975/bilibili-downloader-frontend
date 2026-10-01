@@ -26,13 +26,13 @@ const jsonLd = {
   "url": "https://biliextract.me/tools/bilibili-1080p-hd/",
   "applicationCategory": "MultimediaApplication",
   "operatingSystem": "All",
-  "description": "Download 1080p Full HD and 60FPS Bilibili videos online without watermarks or login requirements."
+  "description": "Download Bilibili videos in 1080p Full HD and 60FPS MP4 quality. Fast, free online video extractor without account login or app installation required."
 };
 ---
 
 <BaseLayout
-  title="1080p Full HD Bilibili Video Downloader - 60FPS & High Bitrate"
-  description="Download Bilibili videos in pristine 1080p Full HD and 60FPS. Free online DASH stream parser with high-speed download speeds and zero compression."
+  title="Bilibili 1080p HD Video Downloader — Save Full HD MP4 Online"
+  description="Download Bilibili videos in 1080p Full HD and 60FPS MP4 quality. Fast, free online video extractor without account login or app installation required."
   canonical="https://biliextract.me/tools/bilibili-1080p-hd/"
   jsonLd={jsonLd}
 >
@@ -46,7 +46,7 @@ const jsonLd = {
         Full HD 1080p & 60FPS
       </div>
       <h1 class="tool-title">
-        Download <span class="text-gradient">Bilibili in 1080p HD</span> Quality
+        <span class="text-gradient">Bilibili 1080p Full HD</span> Video Downloader
       </h1>
       <p class="tool-subtitle">
         Preserve every frame in crisp 1080p resolution. High bitrate, 60fps support, and seamless sound extraction.
@@ -68,6 +68,25 @@ const jsonLd = {
 
   <section class="info-content-section">
     <div class="container">
+      <!-- DASH Stream Sync Explanation Box -->
+      <div class="card sync-explanation-card">
+        <div class="sync-badge">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+          DASH Video & Audio Stream Synchronization
+        </div>
+        <h2>How Our Engine Handles 1080p DASH Streams</h2>
+        <p>
+          Bilibili serves high-definition 1080p, 4K, and 60FPS video using <strong>DASH (Dynamic Adaptive Streaming over HTTP)</strong>. In this architecture, Bilibili intentionally splits high-definition video and audio tracks into two separate, concurrent streams to save streaming bandwidth. Standard video downloaders often fetch only the visual track, resulting in silent videos.
+        </p>
+        <p>
+          <strong>The BiliExtract Solution:</strong> Our parsing engine inspects and synchronizes both the isolated 1080p video container and high-bitrate audio track simultaneously. We provide direct access to synced unified MP4 streams, as well as standalone high-bitrate video and 320kbps audio files—eliminating desync issues without requiring complex command-line tools.
+        </p>
+      </div>
+
       <div class="card content-card">
         <h2>Uncompromised High-Definition Visuals</h2>
         <p>
@@ -120,6 +139,60 @@ const jsonLd = {
 
   .info-content-section {
     padding: 40px 0;
+  }
+
+  .sync-explanation-card {
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.05) 0%, rgba(244, 63, 94, 0.03) 100%), var(--bg-surface);
+    border: 1px solid rgba(255, 107, 0, 0.2);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sync-explanation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--gradient-primary);
+  }
+
+  .sync-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 107, 0, 0.1);
+    color: var(--orange-500);
+    border: 1px solid rgba(255, 107, 0, 0.25);
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  .sync-explanation-card h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    color: var(--text-primary);
+  }
+
+  .sync-explanation-card p {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+
+  .sync-explanation-card p:last-child {
+    margin-bottom: 0;
   }
 
   .content-card {
