@@ -21,13 +21,13 @@ const jsonLd = {
   "name": "BiliExtract - Danmaku & Subtitle Downloader",
   "url": "https://biliextract.me/tools/bilibili-danmaku-subtitle/",
   "applicationCategory": "MultimediaApplication",
-  "description": "Download Bilibili Danmaku bullet comments in XML format and multi-language closed caption subtitle files."
+  "description": "Download Bilibili flying Danmaku bullet comments in XML and extract closed captions in SRT / ASS formats for offline media players like VLC and PotPlayer."
 };
 ---
 
 <BaseLayout
-  title="Bilibili Danmaku & Subtitle Downloader - XML & ASS Comments"
-  description="Download Bilibili flying bullet comments (Danmaku) in XML and ASS subtitle format. Extract multi-language closed captions for any Bilibili video."
+  title="Bilibili Subtitle & Danmaku Downloader — Save XML & SRT Files"
+  description="Download Bilibili flying Danmaku bullet comments in XML and extract closed captions in SRT / ASS formats for offline media players like VLC and PotPlayer."
   canonical="https://biliextract.me/tools/bilibili-danmaku-subtitle/"
   jsonLd={jsonLd}
 >
@@ -40,7 +40,7 @@ const jsonLd = {
         Interactive Bullet Comments
       </div>
       <h1 class="tool-title">
-        Download <span class="text-gradient">Bilibili Danmaku</span> & Subtitles
+        <span class="text-gradient">Bilibili Subtitles</span> & Danmaku Comment Downloader
       </h1>
       <p class="tool-subtitle">
         Preserve the full community experience. Download XML bullet comments and synced multilingual subtitles.
@@ -62,6 +62,52 @@ const jsonLd = {
 
   <section class="info-content-section">
     <div class="container">
+      <!-- Danmaku vs Subtitles Comparison Box -->
+      <div class="card comparison-card">
+        <div class="comparison-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Format Comparison
+        </div>
+        <h2>Danmaku vs. Subtitles: What's the Difference?</h2>
+        <p class="comparison-lead">
+          Understanding the distinction between Bilibili's iconic flying bullet comments and traditional closed captions:
+        </p>
+
+        <div class="comparison-grid">
+          <div class="comparison-box">
+            <div class="box-header">
+              <span class="box-icon">💬</span>
+              <h3>Danmaku (弹幕 — XML Format)</h3>
+            </div>
+            <p>
+              <strong>What it is:</strong> Crowdsourced live bullet comments submitted by viewers that float across the screen synchronized to specific timestamps.
+            </p>
+            <ul>
+              <li><strong>File Type:</strong> Raw structured <code>.xml</code> data containing message coordinates, text color, and timestamps.</li>
+              <li><strong>Best Use:</strong> Recreating the authentic community atmosphere in desktop players like PotPlayer or converting to <code>.ass</code> with Danmaku2ASS.</li>
+            </ul>
+          </div>
+
+          <div class="comparison-box">
+            <div class="box-header">
+              <span class="box-icon">📝</span>
+              <h3>Official Subtitles (SRT / ASS Format)</h3>
+            </div>
+            <p>
+              <strong>What it is:</strong> Formal dialogue transcriptions, multi-language translations (English, Japanese, etc.), and official closed captions uploaded by authors.
+            </p>
+            <ul>
+              <li><strong>File Type:</strong> Standard <code>.srt</code> or <code>.ass</code> subtitle tracks readable by any media player (VLC, IINA, MPV).</li>
+              <li><strong>Best Use:</strong> Language learning, accessibility, translation, and clean reading without screen clutter.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
       <div class="card content-card">
         <h2>What are Bilibili Danmaku (弹幕)?</h2>
         <p>
@@ -114,6 +160,108 @@ const jsonLd = {
 
   .info-content-section {
     padding: 40px 0;
+  }
+
+  .comparison-card {
+    padding: 36px 40px;
+    margin-bottom: 28px;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.04) 0%, rgba(255, 107, 0, 0.03) 100%), var(--bg-surface);
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    border-radius: var(--radius-lg);
+  }
+
+  .comparison-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(244, 63, 94, 0.1);
+    color: var(--rose-500);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    border-radius: var(--radius-full);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+
+  .comparison-card h2 {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .comparison-lead {
+    font-size: 1.02rem;
+    color: var(--text-secondary);
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .comparison-box {
+    background: var(--bg-surface-alt);
+    border: 1px solid var(--border-subtle);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .box-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .box-icon {
+    font-size: 1.4rem;
+  }
+
+  .box-header h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .comparison-box p {
+    font-size: 0.94rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .comparison-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .comparison-box li {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .comparison-box code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--rose-600);
+    font-weight: 600;
   }
 
   .content-card {
