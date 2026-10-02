@@ -35,7 +35,7 @@ const jsonLd = [
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "Download high-resolution Bilibili video cover images and anime thumbnails in 1080p HD without watermarks or login."
+    "description": "Download high-resolution Bilibili video thumbnails and cover images for free. Paste any Bilibili video URL or b23.tv link to save original HD pictures."
   },
   {
     "@context": "https://schema.org",
@@ -53,8 +53,8 @@ const jsonLd = [
 ---
 
 <BaseLayout
-  title="Bilibili Thumbnail Downloader - Download Bilibili Cover Image HD"
-  description="Free Bilibili thumbnail downloader. Extract and save high-resolution video cover images and anime artwork in original HD quality without watermarks."
+  title="Bilibili Thumbnail Downloader — Save HD Video Cover Images"
+  description="Download high-resolution Bilibili video thumbnails and cover images for free. Paste any Bilibili video URL or b23.tv link to save original HD pictures."
   canonical="https://biliextract.me/bilibili-thumbnail-downloader/"
   jsonLd={jsonLd}
 >
@@ -71,7 +71,7 @@ const jsonLd = [
       </div>
 
       <h1 class="tool-title">
-        Bilibili <span class="text-gradient">Thumbnail Downloader</span>
+        <span class="text-gradient">Bilibili Cover Image</span> & Thumbnail Downloader
       </h1>
       <p class="tool-subtitle">
         Download Bilibili cover images in original HD quality. Extract anime artwork, YouTube-style thumbnails, and video posters without watermarks or account login.
@@ -127,13 +127,38 @@ const jsonLd = [
         <div class="preview-wrapper">
           <img id="thumb-img-preview" src="" alt="Bilibili HD Cover Image" class="thumb-preview-img" referrerpolicy="no-referrer" />
           <div class="preview-overlay">
-            <span class="badge-tag">Original Resolution</span>
+            <span class="badge-tag" id="thumb-res-badge">Max Resolution</span>
           </div>
         </div>
 
         <div class="result-details">
           <h2 id="thumb-video-title" class="result-title">Bilibili Video Title</h2>
           <p id="thumb-video-author" class="result-author">Creator: <span>...</span></p>
+
+          <!-- Multiple Resolution Preview Buttons -->
+          <div class="res-selector-box">
+            <span class="res-label">Preview & Download Resolution:</span>
+            <div class="res-buttons" id="res-button-group">
+              <button type="button" class="res-btn active" data-res="max">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+                Max Resolution
+              </button>
+              <button type="button" class="res-btn" data-res="hd">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                </svg>
+                Standard HD (720p)
+              </button>
+              <button type="button" class="res-btn" data-res="small">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <rect x="5" y="6" width="14" height="10" rx="1" ry="1"/>
+                </svg>
+                Small (360p)
+              </button>
+            </div>
+          </div>
 
           <div class="action-buttons">
             <a id="thumb-download-btn" href="#" target="_blank" rel="noopener" class="btn-primary">
@@ -142,7 +167,7 @@ const jsonLd = [
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              Download Cover Image (HD)
+              Download Cover Image
             </a>
 
             <a id="thumb-raw-btn" href="#" target="_blank" rel="noopener" class="btn-secondary">
@@ -225,6 +250,73 @@ const jsonLd = [
   const downloadBtn = document.getElementById('thumb-download-btn') as HTMLAnchorElement | null;
   const rawBtn = document.getElementById('thumb-raw-btn') as HTMLAnchorElement | null;
 
+  const resBadge = document.getElementById('thumb-res-badge');
+  const resBtnGroup = document.getElementById('res-button-group');
+  const resButtons = resBtnGroup?.querySelectorAll('.res-btn');
+
+  let currentRawCoverUrl = '';
+  let currentBaseUrl = '';
+  let currentCleanTitle = 'bilibili_cover';
+  let activeResolution = 'max';
+
+  function applyResolution(res: string) {
+    activeResolution = res;
+    if (!currentBaseUrl) return;
+
+    let targetUrl = currentBaseUrl;
+    let badgeText = 'Max Resolution';
+    let fileSuffix = 'max';
+
+    if (res === 'hd') {
+      targetUrl = `${currentBaseUrl}@1280w_720h_1c.jpg`;
+      badgeText = 'Standard HD (720p)';
+      fileSuffix = '720p';
+    } else if (res === 'small') {
+      targetUrl = `${currentBaseUrl}@640w_360h_1c.jpg`;
+      badgeText = 'Small (360p)';
+      fileSuffix = '360p';
+    }
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const apiBase = isLocal ? 'http://127.0.0.1:8000' : 'https://bilibili-downloader-backend-vpif.onrender.com';
+    const downloadEndpoint = `${apiBase}/api/v1/download`;
+    const proxied = `${downloadEndpoint}?url=${encodeURIComponent(targetUrl)}&filename=${encodeURIComponent(currentCleanTitle + '_' + fileSuffix + '.jpg')}&type=image`;
+
+    if (imgPreview) {
+      imgPreview.referrerPolicy = 'no-referrer';
+      imgPreview.src = targetUrl;
+      imgPreview.onerror = () => {
+        if (!imgPreview.src.includes('/api/v1/download')) {
+          imgPreview.src = proxied;
+        }
+      };
+    }
+
+    if (resBadge) {
+      resBadge.textContent = badgeText;
+    }
+
+    if (downloadBtn) {
+      downloadBtn.href = proxied;
+      downloadBtn.setAttribute('download', `${currentCleanTitle}_${fileSuffix}.jpg`);
+    }
+
+    if (rawBtn) {
+      rawBtn.href = targetUrl;
+    }
+
+    resButtons?.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-res') === res);
+    });
+  }
+
+  resButtons?.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const res = btn.getAttribute('data-res') || 'max';
+      applyResolution(res);
+    });
+  });
+
   // Paste from clipboard
   pasteBtn?.addEventListener('click', async () => {
     try {
@@ -252,7 +344,6 @@ const jsonLd = [
       const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
       const apiBase = isLocal ? 'http://127.0.0.1:8000' : 'https://bilibili-downloader-backend-vpif.onrender.com';
       const apiUrl = `${apiBase}/api/v1/resolve`;
-      const downloadEndpoint = `${apiBase}/api/v1/download`;
 
       const resp = await fetch(apiUrl, {
         method: 'POST',
@@ -273,36 +364,17 @@ const jsonLd = [
         throw new Error(data?.error || data?.detail || 'Could not find thumbnail for this video.');
       }
 
-      // Setup download links
-      const rawCoverUrl = data.thumbnail;
-      const cleanTitle = (data.title || 'bilibili_cover').replace(/[\\/*?:"<>|]/g, '_').slice(0, 50);
+      currentRawCoverUrl = data.thumbnail;
+      currentBaseUrl = data.thumbnail.split('@')[0];
+      currentCleanTitle = (data.title || 'bilibili_cover').replace(/[\\/*?:"<>|]/g, '_').slice(0, 50);
 
-      const proxiedDownload = `${downloadEndpoint}?url=${encodeURIComponent(rawCoverUrl)}&filename=${encodeURIComponent(cleanTitle + '_cover.jpg')}&type=image`;
-
-      // Display preview with fallback proxy
-      if (imgPreview) {
-        imgPreview.referrerPolicy = 'no-referrer';
-        imgPreview.src = data.thumbnail;
-        imgPreview.onerror = () => {
-          if (!imgPreview.src.includes('/api/v1/download')) {
-            imgPreview.src = proxiedDownload;
-          }
-        };
-      }
       if (videoTitle) videoTitle.textContent = data.title || 'Bilibili Video';
       if (videoAuthor) {
         const span = videoAuthor.querySelector('span');
         if (span) span.textContent = data.author_name || 'Creator';
       }
 
-      if (downloadBtn) {
-        downloadBtn.href = proxiedDownload;
-        downloadBtn.setAttribute('download', `${cleanTitle}_cover.jpg`);
-      }
-
-      if (rawBtn) {
-        rawBtn.href = rawCoverUrl;
-      }
+      applyResolution('max');
 
       if (resultSection) {
         resultSection.style.display = 'block';
@@ -489,6 +561,60 @@ const jsonLd = [
   .result-author span {
     font-weight: 700;
     color: var(--text-primary);
+  }
+
+  /* Resolution Selector */
+  .res-selector-box {
+    margin: 8px 0 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .res-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .res-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .res-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 16px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface-alt);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .res-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+    background: var(--bg-surface);
+  }
+
+  .res-btn.active {
+    background: var(--orange-500);
+    color: #ffffff;
+    border-color: var(--orange-500);
+    box-shadow: 0 2px 8px rgba(255, 107, 0, 0.25);
+  }
+
+  .res-btn.active svg {
+    color: #ffffff;
   }
 
   .action-buttons {
