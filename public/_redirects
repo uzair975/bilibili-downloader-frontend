@@ -1,0 +1,7 @@
+# Force HTTPS and non-www at the edge
+# http://biliextract.me/* -> https://biliextract.me/* (301)
+# http://www.biliextract.me/* -> https://biliextract.me/* (301)
+# https://www.biliextract.me/* -> https://biliextract.me/* (301)
+http://biliextract.me/* https://biliextract.me/:splat 301
+http://www.biliextract.me/* https://biliextract.me/:splat 301
+https://www.biliextract.me/* https://biliextract.me/:splat 301

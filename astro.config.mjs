@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://biliextract.me',
+  trailingSlash: 'always',
   compressHTML: true,
   devToolbar: {
     enabled: false
