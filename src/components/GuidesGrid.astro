@@ -1,0 +1,183 @@
+---
+export interface Props {
+  currentPath?: string;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  currentPath = '',
+  title = "Step-by-Step Bilibili Tutorials",
+  subtitle = "Learn how to bypass geo-restrictions, extract DASH audio tracks, and save videos on any operating system."
+} = Astro.props;
+
+const allGuides = [
+  {
+    title: "How to Download Bilibili Videos: Ultimate Guide",
+    path: "/guides/how-to-download-bilibili-videos/",
+    readTime: "7 Min Read",
+    badge: "Most Popular",
+    desc: "Complete walkthrough on extracting video links from Bilibili desktop web and mobile apps, with troubleshooting tips.",
+    icon: "book"
+  },
+  {
+    title: "How to Download Bilibili Videos on PC & Mac",
+    path: "/guides/how-to-download-bilibili-pc/",
+    readTime: "4 Min Read",
+    badge: "Desktop",
+    desc: "Save 1080p Full HD video and 320kbps MP3 audio to Windows 11/10 and macOS with zero software or browser extension installs.",
+    icon: "monitor"
+  },
+  {
+    title: "How to Save Bilibili Videos to iPhone & Android",
+    path: "/guides/how-to-save-bilibili-iphone/",
+    readTime: "4 Min Read",
+    badge: "Mobile",
+    desc: "Learn how to copy b23.tv share links and download videos straight into iOS Files, Camera Roll, or Android Downloads.",
+    icon: "smartphone"
+  },
+  {
+    title: "Fix Bilibili Download 'No Sound' Problem (DASH Audio)",
+    path: "/guides/fix-bilibili-no-sound/",
+    readTime: "5 Min Read",
+    badge: "Fix & Solution",
+    desc: "Why are downloaded 1080p Bilibili videos silent? Understand DASH video/audio stream separation and how to extract audio.",
+    icon: "volume"
+  }
+];
+
+const guides = allGuides.filter(g => !currentPath || g.path !== currentPath);
+---
+
+<section class="guides-grid-section">
+  <div class="section-header">
+    <div class="badge-tag">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      </svg>
+      Help & Knowledge Base
+    </div>
+    <h2 class="section-title">{title}</h2>
+    <p class="section-subtitle">{subtitle}</p>
+  </div>
+
+  <div class="guides-cards-grid">
+    {guides.map((guide) => (
+      <a href={guide.path} class="card guide-card">
+        <div class="guide-card-top">
+          <span class="guide-badge">{guide.badge}</span>
+          <span class="guide-time">{guide.readTime}</span>
+        </div>
+        <h3 class="guide-card-title">{guide.title}</h3>
+        <p class="guide-card-desc">{guide.desc}</p>
+        <div class="guide-card-action">
+          <span>Read Tutorial</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .guides-grid-section {
+    padding: 60px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+  }
+
+  .guides-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .guide-card {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .guide-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--orange-300);
+    box-shadow: 0 12px 28px rgba(255, 107, 0, 0.12);
+  }
+
+  .guide-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .guide-badge {
+    background: var(--rose-50);
+    color: var(--rose-600);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(244, 63, 94, 0.2);
+  }
+
+  .guide-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .guide-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .guide-card-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .guide-card-action {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--orange-500);
+    margin-top: auto;
+    transition: gap var(--transition-fast);
+  }
+
+  .guide-card:hover .guide-card-action {
+    gap: 10px;
+  }
+</style>

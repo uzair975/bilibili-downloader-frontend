@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -57,16 +59,34 @@ const jsonLd = {
 
         <h2>Step 3: Download and Move to Camera Roll</h2>
         <ol>
-          <li>Tap the <strong>Download MP4</strong> button for your preferred resolution.</li>
+          <li>Tap the <strong>Download MP4</strong> button for your preferred resolution using our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> mode.</li>
+          <li>Want just the audio or background music? Extract 320 kbps songs with our <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.</li>
           <li>Safari will prompt: <em>"Do you want to download [filename]?"</em> Tap <strong>Download</strong>.</li>
           <li>Once downloaded, tap the download icon in Safari's address bar.</li>
           <li>Open the video file, tap the iOS <strong>Share Sheet</strong> (square with arrow), and choose <strong>Save Video</strong>.</li>
         </ol>
 
-        <p>Your Bilibili video is now permanently stored in your iPhone's native Camera Roll!</p>
+        <p>Your Bilibili video is now permanently stored in your iPhone's native Camera Roll! You can also save original video covers using our <a href="/bilibili-thumbnail-downloader/" class="text-link">Bilibili Thumbnail Downloader</a>.</p>
       </div>
     </div>
   </article>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      title="Try Our Specialized Downloader Tools"
+      subtitle="Extract high-definition video, studio-quality MP3 audio, and covers directly to mobile devices."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      currentPath="/guides/how-to-save-bilibili-iphone/"
+      title="Related Guides & Tutorials"
+      subtitle="Learn how to download on desktop and resolve audio issues."
+    />
+  </div>
 </BaseLayout>
 
 <style>

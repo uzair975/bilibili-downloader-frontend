@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import DownloaderForm from '../components/DownloaderForm.astro';
 import StreamResults from '../components/StreamResults.astro';
+import ToolsGrid from '../components/ToolsGrid.astro';
+import GuidesGrid from '../components/GuidesGrid.astro';
 import FeatureGrid from '../components/FeatureGrid.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 
@@ -118,6 +120,11 @@ const jsonLd = [
     <StreamResults />
   </div>
 
+  <!-- Specialized Tools Grid -->
+  <div class="container">
+    <ToolsGrid />
+  </div>
+
   <!-- How It Works 3-Step Section -->
   <section class="how-it-works-section">
     <div class="container">
@@ -143,7 +150,9 @@ const jsonLd = [
         <div class="card step-card">
           <div class="step-number">03</div>
           <h3 class="step-title">Download MP4 or MP3</h3>
-          <p class="step-desc">Select your desired resolution (1080p, 720p) or audio quality and click download to save the file instantly.</p>
+          <p class="step-desc">
+            Save Full HD video via our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Downloader</a> or extract background audio with our <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -152,6 +161,11 @@ const jsonLd = [
   <!-- Feature Grid -->
   <div class="container">
     <FeatureGrid />
+  </div>
+
+  <!-- Step-by-Step Guides Section -->
+  <div class="container">
+    <GuidesGrid />
   </div>
 
   <!-- FAQ Section -->

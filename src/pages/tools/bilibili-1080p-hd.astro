@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DownloaderForm from '../../components/DownloaderForm.astro';
 import StreamResults from '../../components/StreamResults.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 
 const hdFaqs = [
@@ -12,6 +14,10 @@ const hdFaqs = [
   {
     question: "Why do some downloaders only give 360p or 480p?",
     answer: "Standard scrapers only capture low-resolution legacy MP4 fallbacks. BiliExtract parses Bilibili's modern DASH video container to retrieve full 1080P Full HD and 720P streams."
+  },
+  {
+    question: "Why do downloaded 1080p videos sometimes have no sound on other websites?",
+    answer: 'Bilibili separates video and audio into DASH streams. Check out our tutorial on <a href="/guides/fix-bilibili-no-sound/" class="text-link">Fixing Bilibili Videos with No Sound</a> or extract pure audio using the <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.'
   },
   {
     question: "Which video codec is best: AVC / H.264, HEVC, or AV1?",
@@ -83,7 +89,7 @@ const jsonLd = {
           Bilibili serves high-definition 1080p, 4K, and 60FPS video using <strong>DASH (Dynamic Adaptive Streaming over HTTP)</strong>. In this architecture, Bilibili intentionally splits high-definition video and audio tracks into two separate, concurrent streams to save streaming bandwidth. Standard video downloaders often fetch only the visual track, resulting in silent videos.
         </p>
         <p>
-          <strong>The BiliExtract Solution:</strong> Our parsing engine inspects and synchronizes both the isolated 1080p video container and high-bitrate audio track simultaneously. We provide direct access to synced unified MP4 streams, as well as standalone high-bitrate video and 320kbps audio files—eliminating desync issues without requiring complex command-line tools.
+          <strong>The BiliExtract Solution:</strong> Our parsing engine inspects and synchronizes both the isolated 1080p video container and high-bitrate audio track simultaneously. We provide direct access to synced unified MP4 streams, as well as standalone high-bitrate video and 320kbps audio files—eliminating desync issues without requiring complex command-line tools. Read our detailed guide on <a href="/guides/fix-bilibili-no-sound/" class="text-link">Fixing DASH Video No Sound</a> or convert audio directly with the <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.
         </p>
       </div>
 
@@ -95,11 +101,28 @@ const jsonLd = {
         </p>
         <p>
           With BiliExtract, you gain direct access to the 1080p stream bitrate. We support H.264/AVC, HEVC, and modern AV1 codecs,
-          ensuring maximum video clarity whether you are archiving educational lectures or high-octane gaming montages.
+          ensuring maximum video clarity whether you are archiving educational lectures or high-octane gaming montages. You can also save video artwork using the <a href="/bilibili-thumbnail-downloader/" class="text-link">Thumbnail Downloader</a> or extract subtitles with the <a href="/tools/bilibili-danmaku-subtitle/" class="text-link">Danmaku & Subtitle Extractor</a>.
         </p>
       </div>
     </div>
   </section>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      currentPath="/tools/bilibili-1080p-hd/"
+      title="More Specialized Bilibili Tools"
+      subtitle="Extract pure audio soundtracks, download original cover images, or grab flying Danmaku comments."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      title="Helpful Guides & Tutorials"
+      subtitle="Step-by-step tutorials on downloading Bilibili media on PC, Mac, iPhone, and Android."
+    />
+  </div>
 
   <div class="container">
     <FaqAccordion faqs={hdFaqs} />

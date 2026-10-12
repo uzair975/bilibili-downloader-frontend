@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DownloaderForm from '../../components/DownloaderForm.astro';
 import StreamResults from '../../components/StreamResults.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 
 const jsonLd = [
   {
@@ -328,12 +330,12 @@ const jsonLd = [
               If you download a 1080P video under the <em>Video Only (DASH)</em> tab, it will not have an embedded audio track. To enjoy high-definition video with crystal-clear audio:
             </p>
             <ol>
-              <li>Download the <strong>1080P MP4</strong> from the <em>Video Only (DASH)</em> tab.</li>
-              <li>Download the <strong>MP3 / M4A</strong> audio file from the <em>Audio</em> tab.</li>
+              <li>Download the <strong>1080P MP4</strong> from the <em>Video Only (DASH)</em> tab via our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a>.</li>
+              <li>Download the <strong>MP3 / M4A</strong> audio file from the <em>Audio</em> tab via our <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.</li>
               <li>Combine them in seconds using free tools like <strong>FFmpeg</strong>, <strong>VLC Media Player</strong>, or online video joiners.</li>
             </ol>
             <p>
-              If you prefer instant 1-click playback without combining files, simply download from the <strong>Video + Audio</strong> tab (which offers 720P HD with sound already built-in).
+              If you prefer instant 1-click playback without combining files, simply download from the <strong>Video + Audio</strong> tab (which offers 720P HD with sound already built-in). For more details on DASH stream separation, read our complete guide on <a href="/guides/fix-bilibili-no-sound/" class="text-link">Fixing Bilibili Videos with No Sound</a>.
             </p>
           </div>
         </section>
@@ -361,7 +363,27 @@ const jsonLd = [
                 <span class="faq-toggle-icon">▼</span>
               </summary>
               <div class="faq-answer">
-                Yes! Simply copy the b23.tv link from the Bilibili app, open Safari, paste it into BiliExtract, tap Download MP4, and select 'Save Video' in Safari's download manager to store it directly in your iOS Photos app.
+                Yes! Simply copy the b23.tv link from the Bilibili app, open Safari, paste it into BiliExtract, tap Download MP4, and select 'Save Video' in Safari's download manager. For full screenshots, check our <a href="/guides/how-to-save-bilibili-iphone/" class="text-link">iPhone & iPad Camera Roll Guide</a>.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>How can I download videos on PC and Mac?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                On Windows or Mac, copy the video URL from your browser address bar and paste it into BiliExtract. For a detailed guide, see our <a href="/guides/how-to-download-bilibili-pc/" class="text-link">PC & Mac Download Tutorial</a>.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span>Can I extract bullet comments and video thumbnails?</span>
+                <span class="faq-toggle-icon">▼</span>
+              </summary>
+              <div class="faq-answer">
+                Yes! Use our specialized <a href="/tools/bilibili-danmaku-subtitle/" class="text-link">Danmaku & Subtitles Downloader</a> to extract XML comments and SRT captions, or grab high-resolution covers with our <a href="/bilibili-thumbnail-downloader/" class="text-link">Thumbnail Downloader</a>.
               </div>
             </details>
 
@@ -372,16 +394,6 @@ const jsonLd = [
               </summary>
               <div class="faq-answer">
                 Bilibili's media servers inspect HTTP Referer and User-Agent headers to prevent third-party hotlinking. BiliExtract operates an intelligent edge proxy that injects the required headers, ensuring your downloads start smoothly without 403 or 412 blocks.
-              </div>
-            </details>
-
-            <details class="faq-item">
-              <summary class="faq-question">
-                <span>How fast is the downloading process?</span>
-                <span class="faq-toggle-icon">▼</span>
-              </summary>
-              <div class="faq-answer">
-                Because BiliExtract streams data directly through high-bandwidth reverse proxies without caching heavy video files to server disk, downloads occur at the maximum speed supported by your internet connection.
               </div>
             </details>
           </div>
@@ -397,6 +409,23 @@ const jsonLd = [
       </div>
     </div>
   </article>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      title="Try Our Specialized Downloader Tools"
+      subtitle="Extract synchronized 1080p HD video, studio-quality MP3 audio, and Danmaku subtitles with zero hassle."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      currentPath="/guides/how-to-download-bilibili-videos/"
+      title="More Helpful Guides & Tutorials"
+      subtitle="Master Bilibili downloading on desktop, iOS, and solve playback issues."
+    />
+  </div>
 </BaseLayout>
 
 <style>

@@ -32,7 +32,6 @@ const isLinkActive = (target: string) => {
       <a href="/bilibili-thumbnail-downloader/" class={`nav-link ${isLinkActive('/bilibili-thumbnail-downloader') ? 'active' : ''}`}>Thumbnail</a>
       <a href="/tools/bilibili-danmaku-subtitle/" class={`nav-link ${isLinkActive('/tools/bilibili-danmaku-subtitle') ? 'active' : ''}`}>Subtitles</a>
       <a href="/guides/how-to-download-bilibili-videos/" class={`nav-link ${isLinkActive('/guides/how-to-download-bilibili-videos') ? 'active' : ''}`}>Guides</a>
-      <a href="/legal/privacy-policy/" class={`nav-link ${isLinkActive('/legal/privacy-policy') ? 'active' : ''}`}>Privacy Policy</a>
     </nav>
 
     <!-- Mobile Hamburger Toggle -->
@@ -94,18 +93,13 @@ const isLinkActive = (target: string) => {
         </svg>
         <span>Guides</span>
       </a>
-      <a href="/legal/privacy-policy/" class={`quick-pill ${isLinkActive('/legal/privacy-policy') ? 'active' : ''}`}>
-        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        </svg>
-        <span>Privacy</span>
-      </a>
     </div>
   </div>
 
   <!-- Mobile Dropdown Drawer -->
   <div class="mobile-drawer" id="mobile-drawer">
     <nav class="drawer-nav">
+      <div class="drawer-section-label">Tools</div>
       <a href="/" class={`drawer-link ${isLinkActive('/') ? 'active' : ''}`}>
         <span class="drawer-icon">🏠</span>
         <span>Universal Downloader</span>
@@ -128,9 +122,28 @@ const isLinkActive = (target: string) => {
         <span>Danmaku & Subtitles (XML/SRT)</span>
       </a>
       <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Tutorials & Guides</div>
       <a href="/guides/how-to-download-bilibili-videos/" class={`drawer-link ${isLinkActive('/guides/how-to-download-bilibili-videos') ? 'active' : ''}`}>
         <span class="drawer-icon">📖</span>
         <span>How to Download Videos (Guide)</span>
+      </a>
+      <a href="/guides/how-to-download-bilibili-pc/" class={`drawer-link ${isLinkActive('/guides/how-to-download-bilibili-pc') ? 'active' : ''}`}>
+        <span class="drawer-icon">💻</span>
+        <span>Download on PC & Mac</span>
+      </a>
+      <a href="/guides/how-to-save-bilibili-iphone/" class={`drawer-link ${isLinkActive('/guides/how-to-save-bilibili-iphone') ? 'active' : ''}`}>
+        <span class="drawer-icon">📱</span>
+        <span>Save to iPhone & Android</span>
+      </a>
+      <a href="/guides/fix-bilibili-no-sound/" class={`drawer-link ${isLinkActive('/guides/fix-bilibili-no-sound') ? 'active' : ''}`}>
+        <span class="drawer-icon">🔊</span>
+        <span>Fix Video No Sound (DASH)</span>
+      </a>
+      <div class="drawer-divider"></div>
+      <div class="drawer-section-label">Legal</div>
+      <a href="/legal/terms-of-service/" class={`drawer-link ${isLinkActive('/legal/terms-of-service') ? 'active' : ''}`}>
+        <span class="drawer-icon">📜</span>
+        <span>Terms of Service</span>
       </a>
       <a href="/legal/privacy-policy/" class={`drawer-link ${isLinkActive('/legal/privacy-policy') ? 'active' : ''}`}>
         <span class="drawer-icon">🔒</span>
@@ -424,10 +437,19 @@ const isLinkActive = (target: string) => {
     border-radius: 10px;
   }
 
+  .drawer-section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    padding: 6px 14px 2px;
+  }
+
   .drawer-divider {
     height: 1px;
     background: var(--border-subtle);
-    margin: 12px 0;
+    margin: 10px 0;
   }
 
   /* Responsive Breakpoints */

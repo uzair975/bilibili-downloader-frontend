@@ -11,23 +11,23 @@ export interface Props {
 const defaultFaqs: FaqItem[] = [
   {
     question: "Why do downloaded 1080p Bilibili videos sometimes have no sound on other websites?",
-    answer: "Bilibili utilizes DASH (Dynamic Adaptive Streaming over HTTP), which splits high-definition video and audio into two separate data streams. BiliExtract parses and extracts the synced media links to ensure full audio playback."
+    answer: 'Bilibili utilizes DASH (Dynamic Adaptive Streaming over HTTP), which splits high-definition video and audio into two separate data streams. If your downloaded file is silent, read our <a href="/guides/fix-bilibili-no-sound/" class="text-link">Guide on Fixing Bilibili No Sound</a> or extract high-bitrate audio directly with our <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.'
   },
   {
     question: "Do I need a Bilibili account or login cookies to download high-resolution videos?",
-    answer: "No. Our tool extracts available public streams directly without requiring personal credentials, phone numbers, or session cookies."
+    answer: 'No. You can download public streams up to 1080p Full HD using our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> without providing personal credentials, phone numbers, or session cookies.'
   },
   {
     question: "How do I download Bilibili videos to my iPhone or iPad?",
-    answer: "On iOS Safari, simply paste the video URL into BiliExtract, click 'Download Now', select your preferred video or MP3 option, and tap 'Download'. The file will save directly into your Safari Downloads folder or the iOS Files app."
+    answer: 'On iOS Safari, simply paste the video URL into BiliExtract, click "Download Now", and save the file to your Downloads folder. For full instructions, check our tutorial on <a href="/guides/how-to-save-bilibili-iphone/" class="text-link">How to Save Bilibili Videos to iPhone & iPad</a>.'
   },
   {
     question: "What is Danmaku and how do I download the flying comments?",
-    answer: "Danmaku (bullet comments) are the flying real-time user comments overlaying Bilibili videos. BiliExtract allows you to download the complete comment archive in standard XML format, which can be played back in media players like PotPlayer, VLC, or MPV."
+    answer: 'Danmaku (bullet comments) are the flying real-time user comments overlaying Bilibili videos. Use our dedicated <a href="/tools/bilibili-danmaku-subtitle/" class="text-link">Danmaku & Subtitle Downloader</a> to extract the complete comment archive in XML format or captions in SRT / ASS.'
   },
   {
     question: "Is using BiliExtract completely free with no download limits?",
-    answer: "Yes, BiliExtract is 100% free to use with zero registration. You can convert and download as many videos and audio tracks as you need."
+    answer: 'Yes, BiliExtract is 100% free to use with zero registration. You can convert videos to MP3, download 1080p clips, and even save HD covers with our <a href="/bilibili-thumbnail-downloader/" class="text-link">Bilibili Thumbnail Downloader</a>.'
   }
 ];
 
@@ -58,7 +58,7 @@ const { faqs = defaultFaqs } = Astro.props;
           </div>
         </summary>
         <div class="faq-answer">
-          <p>{faq.answer}</p>
+          <p set:html={faq.answer} />
         </div>
       </details>
     ))}
@@ -147,5 +147,16 @@ const { faqs = defaultFaqs } = Astro.props;
     line-height: 1.65;
     border-top: 1px solid var(--border-subtle);
     padding-top: 16px;
+  }
+
+  .faq-answer :global(.text-link) {
+    color: var(--orange-500);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 600;
+  }
+
+  .faq-answer :global(.text-link:hover) {
+    color: var(--orange-600);
   }
 </style>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -61,16 +63,34 @@ const jsonLd = {
           Our extractor inspects the video manifest in real-time. In the results table:
         </p>
         <ul>
-          <li><strong>For Video:</strong> Click the <em>Download MP4</em> button next to 1080P Full HD or 720P HD.</li>
-          <li><strong>For Audio Only:</strong> Switch to the <em>Audio</em> tab and download 320 kbps MP3.</li>
+          <li><strong>For High-Definition Video:</strong> Use our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> mode to save crisp 1080p/720p MP4 files.</li>
+          <li><strong>For Audio Only:</strong> Convert the soundtrack straight to 320 kbps using our <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.</li>
+          <li><strong>For Flying Comments:</strong> Extract real-time bullet comments via our <a href="/tools/bilibili-danmaku-subtitle/" class="text-link">Danmaku & Subtitle Extractor</a>.</li>
         </ul>
 
         <div class="tip-box">
-          <strong>Pro-Tip for Fast Downloads:</strong> If your browser opens the video in a new tab instead of immediately downloading, right-click the video and select <em>"Save Video As..."</em> to store it on your drive.
+          <strong>Audio Missing on Downloaded Video?</strong> If your downloaded MP4 has no audio, check out our guide on <a href="/guides/fix-bilibili-no-sound/" class="text-link">Fixing Bilibili DASH Video No Sound</a>.
         </div>
       </div>
     </div>
   </article>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      title="Try Our Specialized Downloader Tools"
+      subtitle="Extract synchronized 1080p HD video, studio-quality MP3 audio, and Danmaku subtitles on PC and Mac."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      currentPath="/guides/how-to-download-bilibili-pc/"
+      title="Related Guides & Tutorials"
+      subtitle="Master Bilibili downloading on mobile devices and fix audio issues."
+    />
+  </div>
 </BaseLayout>
 
 <style>

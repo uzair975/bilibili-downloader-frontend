@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DownloaderForm from '../../components/DownloaderForm.astro';
 import StreamResults from '../../components/StreamResults.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 
 const audioFaqs = [
@@ -16,6 +18,10 @@ const audioFaqs = [
   {
     question: "Is there any audio compression or loss of quality during conversion?",
     answer: "No re-encoding compression is performed. You receive the exact untouched high-bitrate AAC/MP4A stream as uploaded by the content creator."
+  },
+  {
+    question: "How do I download the full video along with audio?",
+    answer: 'If you want full high-definition video rather than just an audio track, use our <a href="/tools/bilibili-1080p-hd/" class="text-link">Bilibili 1080p HD Video Downloader</a>.'
   }
 ];
 
@@ -77,6 +83,9 @@ const jsonLd = {
           BiliExtract's dedicated audio engine detects the isolated audio stream encoded in AAC / MP4A format inside Bilibili's DASH stream manifest,
           bypassing video bloat to deliver pure, high-fidelity sound.
         </p>
+        <p>
+          Need to save the accompanying visuals as well? Use our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> or grab cover artwork with the <a href="/bilibili-thumbnail-downloader/" class="text-link">Thumbnail Downloader</a>. If you encounter videos downloaded without sound on other platforms, see our guide on <a href="/guides/fix-bilibili-no-sound/" class="text-link">Fixing Bilibili DASH Audio Issues</a>.
+        </p>
 
         <div class="formats-list-box">
           <h3>Supported Audio Output Formats</h3>
@@ -110,6 +119,23 @@ const jsonLd = {
       </div>
     </div>
   </section>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      currentPath="/tools/bilibili-to-mp3/"
+      title="More Specialized Bilibili Tools"
+      subtitle="Switch to high-definition video downloading, cover extraction, or Danmaku bullet comments."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      title="Helpful Guides & Tutorials"
+      subtitle="Master Bilibili downloading on mobile, desktop, and solve common playback questions."
+    />
+  </div>
 
   <div class="container">
     <FaqAccordion faqs={audioFaqs} />

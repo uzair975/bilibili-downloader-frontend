@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DownloaderForm from '../../components/DownloaderForm.astro';
 import StreamResults from '../../components/StreamResults.astro';
+import ToolsGrid from '../../components/ToolsGrid.astro';
+import GuidesGrid from '../../components/GuidesGrid.astro';
 import FaqAccordion from '../../components/FaqAccordion.astro';
 
 const subFaqs = [
@@ -12,6 +14,10 @@ const subFaqs = [
   {
     question: "Are official closed-caption subtitles also downloaded?",
     answer: "Yes, whenever a Bilibili video includes official or community AI translated subtitles (English, Japanese, Traditional Chinese), direct download links are provided."
+  },
+  {
+    question: "Can I download the synchronized video and audio as well?",
+    answer: 'Yes! Use our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> for high-resolution video or the <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a> for music tracks.'
   }
 ];
 
@@ -116,11 +122,28 @@ const jsonLd = {
         </p>
         <p>
           BiliExtract connects to Bilibili's CID stream indices to extract the complete comment archive in structured XML format,
-          ready for conversion or desktop playback.
+          ready for conversion or desktop playback. To download the video frames to accompany your subtitles, visit our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a>, or grab thumbnail pictures using our <a href="/bilibili-thumbnail-downloader/" class="text-link">Thumbnail Downloader</a>.
         </p>
       </div>
     </div>
   </section>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      currentPath="/tools/bilibili-danmaku-subtitle/"
+      title="More Specialized Bilibili Tools"
+      subtitle="Extract high-definition video, convert soundtrack MP3s, or download video covers."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      title="Helpful Guides & Tutorials"
+      subtitle="Explore in-depth walkthroughs for downloading Bilibili content on all devices."
+    />
+  </div>
 
   <div class="container">
     <FaqAccordion faqs={subFaqs} />

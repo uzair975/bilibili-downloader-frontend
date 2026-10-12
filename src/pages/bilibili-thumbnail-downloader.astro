@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ToolsGrid from '../components/ToolsGrid.astro';
+import GuidesGrid from '../components/GuidesGrid.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 
 const thumbnailFaqs = [
@@ -223,9 +225,29 @@ const jsonLd = [
           <li><strong>Mobile Shortlink Support:</strong> Automatically parses and unrolls <code>b23.tv</code> app links.</li>
           <li><strong>Zero Installation &amp; Free:</strong> 100% web-based. No browser extensions, software, or accounts needed.</li>
         </ul>
+        <p style="margin-top: 18px; color: var(--text-secondary);">
+          Need to archive the full video or extract music tracks as well? Check out our <a href="/tools/bilibili-1080p-hd/" class="text-link">1080p HD Video Downloader</a> or convert audio with the <a href="/tools/bilibili-to-mp3/" class="text-link">Bilibili to MP3 Converter</a>.
+        </p>
       </div>
     </div>
   </section>
+
+  <!-- Related Tools -->
+  <div class="container">
+    <ToolsGrid
+      currentPath="/bilibili-thumbnail-downloader/"
+      title="More Specialized Bilibili Tools"
+      subtitle="Download full HD MP4 videos, convert audio to MP3, or extract Danmaku bullet comments."
+    />
+  </div>
+
+  <!-- Related Guides -->
+  <div class="container">
+    <GuidesGrid
+      title="Helpful Guides & Tutorials"
+      subtitle="Learn how to save media directly to iPhone Camera Roll, PC, and Mac."
+    />
+  </div>
 
   <!-- FAQ Section -->
   <div class="container faq-wrap">
